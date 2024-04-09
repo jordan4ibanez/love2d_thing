@@ -1,7 +1,7 @@
 # love2d_thing
  ye
 
-First you need npm, if you're on ubuntu it's super outdated so get it here: https://github.com/nodesource/distributions#ubuntu-versions
+First you need node, if you're on ubuntu it's super outdated so get it here: https://github.com/nodesource/distributions#ubuntu-versions
 
 I made a basic npm thing in ``install_dependencies.sh``.
 
