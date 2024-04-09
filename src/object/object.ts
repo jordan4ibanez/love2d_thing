@@ -1,4 +1,4 @@
 interface Obj {
-  position: number
-  size: 
+  position: Vec2
+  size: Vec2
 }
