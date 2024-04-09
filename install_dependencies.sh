@@ -1,1 +1,1 @@
-npm install -D lua-types
+npm install -D typescript typescript-to-lua lua-types love-typescript-definitions
