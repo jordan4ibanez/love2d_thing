@@ -1,4 +1,4 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
-function main(self)
+love.draw = function()
     print("hi")
 end

@@ -1,3 +1,3 @@
-function main() {
+love.draw = function () {
   print("hi")
 }
