@@ -13,6 +13,14 @@ love.draw = function()
         math.random() * 100
     )
     love.graphics.setColor(255, 255, 255)
+    local player = getPlayer(nil)
+    love.graphics.rectangle(
+        "line",
+        player.position.x,
+        player.position.y,
+        player.size.x,
+        player.size.y
+    )
     love.graphics.print("hi", 1, 1)
     love.graphics.setColor(255, 255, 0)
     love.graphics.rectangle(

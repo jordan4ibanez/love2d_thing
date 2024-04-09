@@ -5,3 +5,9 @@ class Player extends Entity {
     print(this.position, this.size);
   }
 }
+
+let player = new Player(new Vec2(0, 0), new Vec2(20, 20));
+
+function getPlayer(): Player {
+  return player;
+}
