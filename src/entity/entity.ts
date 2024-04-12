@@ -31,8 +31,23 @@ function removeEntity(entity: Entity): void {
  * @param delta Delta time between frames.
  */
 export function entitiesThink(delta: number) {
-  for (let [uuid, entity] of entityMap) {
+  for (let [_, entity] of entityMap) {
     entity.think(delta);
+  }
+}
+
+/**
+ * Draw all the entities in the environment.
+ */
+export function entitiesDraw() {
+  for (let [uuid, entity] of entityMap) {
+    const pos = entity.position;
+    const size = entity.size;
+    const color = entity.color;
+
+    // todo: shift the camera around, check if the entity will even be on the screen.
+    love.graphics.setColor(color.red, color.green, color.blue, color.alpha);
+    love.graphics.rectangle("line", pos.x, pos.y, size.x, size.y);
   }
 }
 
@@ -67,6 +82,6 @@ export class Entity implements Obj {
   }
 
   think(delta: number) {
-    print("thonk")
+    // (Does nothing by default.)
   }
 }

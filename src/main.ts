@@ -1,4 +1,4 @@
-import { entitiesThink, Entity } from "./entity/entity"
+import { entitiesDraw, entitiesThink, Entity } from "./entity/entity"
 import { getPlayer, initializePlayer } from "./entity/player/player"
 import { Vec2 } from "./vec2/vec2";
 
@@ -40,6 +40,7 @@ love.draw = (): void => {
 
   // love.graphics.pop()
 
+  entitiesDraw();
 
 }
 
