@@ -5,10 +5,11 @@
     "dev": "tstl --watch"
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.8",
     "@typescript-to-lua/language-extensions": "^1.19.0",
     "love-typescript-definitions": "^11.4.2",
     "lua-types": "^2.13.1",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "typescript-to-lua": "file:..."
   }
 }

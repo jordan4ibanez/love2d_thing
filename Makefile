@@ -3,7 +3,7 @@ default:
 	@npx tstl
 	@echo "done!"
 	@echo "running..."
-	@love src/
+	@love built_game/
 
 build:
 	@echo "building..."
@@ -15,4 +15,4 @@ run:
 	@npx tstl
 	@echo "done!"
 	@echo "running..."
-	@love src/
+	@love built_game/
