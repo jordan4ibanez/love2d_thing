@@ -4,17 +4,17 @@ import { uuid } from "../utility/uuid";
 import { randomRGBA, RGBA } from "../utility/rgba";
 
 
-let entity_map = new Map<string, Entity>();
+let entityMap = new Map<string, Entity>();
 
 /**
  * Add an entity into the global map.
  * @param entity Entity to be added.
  * @returns Nothing.
  */
-function add_entity(entity: Entity): void {
+function addEntity(entity: Entity): void {
   const uuid = entity.uuid;
-  if (!entity_map.has(uuid)) {
-    entity_map.set(uuid, entity);
+  if (!entityMap.has(uuid)) {
+    entityMap.set(uuid, entity);
   }
 }
 
@@ -22,8 +22,12 @@ function add_entity(entity: Entity): void {
  * Remove an entity from the global map.
  * @param entity The entity to remove.
  */
-function remove_entity(entity: Entity): void {
-  entity_map.delete(entity.uuid);
+function removeEntity(entity: Entity): void {
+  entityMap.delete(entity.uuid);
+}
+
+export function entityThink() {
+
 }
 
 /**
@@ -48,13 +52,15 @@ export class Entity implements Obj {
 
     // print(this.uuid)
 
-    add_entity(this);
+    addEntity(this);
 
   }
 
   destroy() {
-    remove_entity(this);
+    removeEntity(this);
   }
 
-
+  think() {
+    print("thonk")
+  }
 }

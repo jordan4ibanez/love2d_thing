@@ -7,6 +7,10 @@ export class Player extends Entity {
 
     print(this.position.x, this.position.y);
   }
+
+  think(): void {
+    print("player time!")
+  }
 }
 
 let player = new Player(new Vec2(0, 0), new Vec2(20, 20));
