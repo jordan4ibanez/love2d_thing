@@ -5,11 +5,9 @@ sudo npm install -g typescript-to-lua
 sudo npm install -g lua-types
 sudo npm install -g love-typescript-definitions
 sudo npm install -g @typescript-to-lua/language-extensions
-sudo npm install -g @types/uuid
 
-sudo npm install -D typescript
-sudo npm install -D typescript-to-lua
-sudo npm install -D lua-types
-sudo npm install -D love-typescript-definitions
-sudo npm install -D @typescript-to-lua/language-extensions
-sudo npm install -D @types/uuid
+npm install -D typescript
+npm install -D typescript-to-lua
+npm install -D lua-types
+npm install -D love-typescript-definitions
+npm install -D @typescript-to-lua/language-extensions
