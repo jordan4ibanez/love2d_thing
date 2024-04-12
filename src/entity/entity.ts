@@ -47,7 +47,11 @@ export function entitiesDraw() {
 
     // todo: shift the camera around, check if the entity will even be on the screen.
     love.graphics.setColor(color.red, color.green, color.blue, color.alpha);
-    love.graphics.rectangle("line", pos.x, pos.y, size.x, size.y);
+
+    // This gives the graphics a really horrible NES vibe.
+    const drawMode = (math.random() > 0.95) ? "line" : "fill";
+
+    love.graphics.rectangle(drawMode, pos.x, pos.y, size.x, size.y);
   }
 }
 
