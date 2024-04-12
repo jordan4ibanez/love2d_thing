@@ -11,8 +11,5 @@ build:
 	@echo "done!"
 
 run:
-	@echo "building..."
-	@npx tstl
-	@echo "done!"
 	@echo "running..."
 	@love built_game/
