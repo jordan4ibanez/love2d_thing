@@ -1,7 +1,90 @@
-local ____lualib = require("lualib_bundle")
-local __TS__Class = ____lualib.__TS__Class
-local __TS__New = ____lualib.__TS__New
-Vec2 = __TS__Class()
+-- Lua Library inline imports
+local function __TS__Class(self)
+    local c = {prototype = {}}
+    c.prototype.__index = c.prototype
+    c.prototype.constructor = c
+    return c
+end
+
+local function __TS__New(target, ...)
+    local instance = setmetatable({}, target.prototype)
+    instance:____constructor(...)
+    return instance
+end
+
+local function __TS__StringIncludes(self, searchString, position)
+    if not position then
+        position = 1
+    else
+        position = position + 1
+    end
+    local index = string.find(self, searchString, position, true)
+    return index ~= nil
+end
+
+local __TS__Match = string.match
+
+local function __TS__SourceMapTraceBack(fileName, sourceMap)
+    _G.__TS__sourcemap = _G.__TS__sourcemap or ({})
+    _G.__TS__sourcemap[fileName] = sourceMap
+    if _G.__TS__originalTraceback == nil then
+        local originalTraceback = debug.traceback
+        _G.__TS__originalTraceback = originalTraceback
+        debug.traceback = function(thread, message, level)
+            local trace
+            if thread == nil and message == nil and level == nil then
+                trace = originalTraceback()
+            elseif __TS__StringIncludes(_VERSION, "Lua 5.0") then
+                trace = originalTraceback((("[Level " .. tostring(level)) .. "] ") .. tostring(message))
+            else
+                trace = originalTraceback(thread, message, level)
+            end
+            if type(trace) ~= "string" then
+                return trace
+            end
+            local function replacer(____, file, srcFile, line)
+                local fileSourceMap = _G.__TS__sourcemap[file]
+                if fileSourceMap ~= nil and fileSourceMap[line] ~= nil then
+                    local data = fileSourceMap[line]
+                    if type(data) == "number" then
+                        return (srcFile .. ":") .. tostring(data)
+                    end
+                    return (data.file .. ":") .. tostring(data.line)
+                end
+                return (file .. ":") .. line
+            end
+            local result = string.gsub(
+                trace,
+                "(%S+)%.lua:(%d+)",
+                function(file, line) return replacer(nil, file .. ".lua", file .. ".ts", line) end
+            )
+            local function stringReplacer(____, file, line)
+                local fileSourceMap = _G.__TS__sourcemap[file]
+                if fileSourceMap ~= nil and fileSourceMap[line] ~= nil then
+                    local chunkName = (__TS__Match(file, "%[string \"([^\"]+)\"%]"))
+                    local sourceName = string.gsub(chunkName, ".lua$", ".ts")
+                    local data = fileSourceMap[line]
+                    if type(data) == "number" then
+                        return (sourceName .. ":") .. tostring(data)
+                    end
+                    return (data.file .. ":") .. tostring(data.line)
+                end
+                return (file .. ":") .. line
+            end
+            result = string.gsub(
+                result,
+                "(%[string \"[^\"]+\"%]):(%d+)",
+                function(file, line) return stringReplacer(nil, file, line) end
+            )
+            return result
+        end
+    end
+end
+-- End of Lua Library inline imports
+__TS__SourceMapTraceBack(debug.getinfo(1).short_src, {["86"] = 1,["87"] = 1,["88"] = 1,["89"] = 6,["90"] = 7,["91"] = 8,["92"] = 6,["93"] = 16,["94"] = 17,["95"] = 18,["96"] = 19,["97"] = 16,["98"] = 27,["99"] = 28,["100"] = 29,["101"] = 30,["102"] = 27,["103"] = 38,["104"] = 39,["105"] = 40,["106"] = 41,["107"] = 38,["108"] = 49,["109"] = 50,["110"] = 51,["111"] = 52,["112"] = 49,["113"] = 60,["114"] = 61,["115"] = 62,["116"] = 63,["117"] = 60,["118"] = 70,["119"] = 71,["120"] = 70});
+local ____exports = {}
+____exports.Vec2 = __TS__Class()
+local Vec2 = ____exports.Vec2
 Vec2.name = "Vec2"
 function Vec2.prototype.____constructor(self, x, y)
     self.x = x
@@ -33,5 +116,6 @@ function Vec2.prototype.div(self, other)
     return self
 end
 function Vec2.prototype.clone(self)
-    return __TS__New(Vec2, self.x, self.y)
+    return __TS__New(____exports.Vec2, self.x, self.y)
 end
+return ____exports

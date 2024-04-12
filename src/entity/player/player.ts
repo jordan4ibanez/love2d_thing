@@ -1,4 +1,7 @@
-class Player extends Entity {
+import { Entity } from "../entity"
+import { Vec2 } from "../../vec2/vec2"
+
+export class Player extends Entity {
   constructor(position: Vec2, size: Vec2) {
     super(position, size);
 
@@ -8,6 +11,6 @@ class Player extends Entity {
 
 let player = new Player(new Vec2(0, 0), new Vec2(20, 20));
 
-function getPlayer(): Player {
+export function getPlayer(): Player {
   return player;
 }
