@@ -8,12 +8,20 @@ export class Player extends Entity {
     print(this.position.x, this.position.y);
   }
 
-  think(): void {
+  think(delta: number): void {
     print("player time!")
   }
 }
 
 let player = new Player(new Vec2(0, 0), new Vec2(20, 20));
+
+/**
+ * This function literally just makes lua load this file up. (for now)
+ * todo: remove this thing.
+ */
+export function initializePlayer() {
+
+}
 
 export function getPlayer(): Player {
   return player;

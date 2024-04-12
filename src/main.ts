@@ -1,14 +1,24 @@
-import { getPlayer } from "./entity/player/player"
+import { entitiesThink, Entity } from "./entity/entity"
+import { getPlayer, initializePlayer } from "./entity/player/player"
+import { Vec2 } from "./vec2/vec2";
 
-// love.load = (): void => {
-//   print("loaded")
-// }
+love.load = (): void => {
+  print("loaded")
+  initializePlayer();
+
+  // You can just dump entities into existence and they automatically become part
+  // of the environment.
+  new Entity(new Vec2(10, 10), new Vec2(10, 10));
+  new Entity(new Vec2(100, 100), new Vec2(10, 10));
+}
 
 love.update = (delta: number) => {
   // print(delta)
   if (love.keyboard.isDown("escape")) {
-    love.event.quit()
+    love.event.quit();
   }
+
+  entitiesThink(delta);
 }
 
 love.draw = (): void => {
@@ -18,7 +28,7 @@ love.draw = (): void => {
 
   // love.graphics.setColor(255, 255, 255)
 
-  let player = getPlayer();
+  // let player = getPlayer();
 
   // love.graphics.rectangle("line", player.position.x, player.position.y, player.size.x, player.size.y)
 

@@ -26,8 +26,14 @@ function removeEntity(entity: Entity): void {
   entityMap.delete(entity.uuid);
 }
 
-export function entityThink() {
-
+/**
+ * Trigger the think() function of entities.
+ * @param delta Delta time between frames.
+ */
+export function entitiesThink(delta: number) {
+  for (let [uuid, entity] of entityMap) {
+    entity.think(delta);
+  }
 }
 
 /**
@@ -60,7 +66,7 @@ export class Entity implements Obj {
     removeEntity(this);
   }
 
-  think() {
+  think(delta: number) {
     print("thonk")
   }
 }
