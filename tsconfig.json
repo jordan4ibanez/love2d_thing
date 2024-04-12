@@ -12,6 +12,8 @@
       "love-typescript-definitions",
       "@typescript-to-lua/language-extensions"
     ],
+    "rootDir": "src",
+    "outDir": "built_game",
     "strict": true,
   },
   "tstl": {
