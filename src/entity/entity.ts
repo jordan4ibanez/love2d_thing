@@ -1,6 +1,6 @@
 import { Vec2 } from "../vec2/vec2"
 import { Obj } from "../object/object";
-import { v4 as uuidv4 } from "uuid"
+import { uuid } from "../utility/uuid";
 
 let entity_map = new Map<string, Entity>();
 
@@ -11,7 +11,9 @@ export class Entity implements Obj {
 
   constructor(position: Vec2, size: Vec2) {
     this.position = position.clone();
-    this.size = position.clone();
-    this.uuid = uuidv4()
+    this.size = size.clone();
+    this.uuid = uuid()
+
+    print(this.uuid)
   }
 }
