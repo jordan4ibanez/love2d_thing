@@ -13,13 +13,11 @@
       "@typescript-to-lua/language-extensions"
     ],
     "strict": true,
-    "downlevelIteration": true
   },
   "tstl": {
     "luaTarget": "JIT",
     "noHeader": true,
     "noImplicitSelf": true,
     "sourceMapTraceback": true,
-    "luaLibImport": "inline"
   }
 }
